@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://labfond.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>labfond｜言葉と学びのちいさな道具箱</title>
+<meta name="description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」など、ブラウザだけで使える無料のウェブツールとクイズを公開しています。">
+<meta property="og:title" content="labfond｜言葉と学びのちいさな道具箱">
+<meta property="og:description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」など、ブラウザだけで使える無料のウェブツールとクイズを公開しています。">
+<meta property="og:url" content="https://labfond.com/">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --border: #e2e2e6; --text: #1a1a1e;
+    --text-sub: #6b6b74; --accent: #3b6ef6; --accent-soft: #eef2ff; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+      --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+    --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-footer {
+    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    font-size: 0.75rem; color: var(--text-sub);
+  }
+  .site-footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+  .site-footer a { color: var(--text-sub); text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+  .lead { color: var(--text-sub); font-size: 0.85rem; margin: 0 0 24px; line-height: 1.7; }
+  .doc-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .doc-panel h2 { font-size: 1rem; font-weight: 700; margin: 28px 0 10px; }
+  .doc-panel h2:first-child { margin-top: 0; }
+  .doc-panel p, .doc-panel li { font-size: 0.9rem; line-height: 1.85; }
+  .doc-panel ul { margin: 8px 0; padding-left: 1.4em; }
+  .doc-panel a { color: var(--accent); }
+  .profile-row { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.9rem; }
+  .profile-row .k { width: 96px; flex-shrink: 0; color: var(--text-sub); }
+  .updated { color: var(--text-sub); font-size: 0.8rem !important; margin-top: 24px; }
+  .form-btn {
+    display: inline-block; margin-top: 8px; padding: 12px 20px; border-radius: 10px;
+    background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  }
+  .form-btn:hover { opacity: 0.9; }
+  .hero { padding: 20px 0 8px; }
+  .hero h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 10px; }
+  .hero .lead { font-size: 0.95rem; margin-bottom: 6px; color: var(--text); }
+  .hero .lead.en { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 28px; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; margin: 0 0 12px; }
+  .tool-grid { display: grid; gap: 12px; margin-bottom: 28px; }
+  .tool-card {
+    display: flex; gap: 16px; align-items: flex-start; padding: 18px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; color: var(--text); transition: border-color .15s, transform .15s;
+  }
+  .tool-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .tool-icon {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;
+  }
+  .tool-icon-color { background: conic-gradient(#e0503c, #f2b33d, #4cb36b, #3b6ef6, #9b5de5, #e0503c); }
+  .tool-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .tool-name { font-weight: 700; font-size: 1rem; }
+  .tool-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-sub); }
+  .tool-meta { font-size: 0.72rem; color: var(--accent); margin-top: 2px; }
+  .note { margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="site-brand" href="/">labfond</a>
+  </header>
+
+  <section class="hero">
+    <h1>labfond</h1>
+    <p class="lead">言葉と学びの、ちいさな道具箱。<br>ブラウザだけで使える、無料のツールとクイズを集めています。</p>
+    <p class="lead en" lang="en">Free, simple web tools and quizzes — no sign-up, no install.</p>
+  </section>
+
+  <h2 class="section-title">ツール・コンテンツ一覧</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://moji.labfond.com/">
+      <span class="tool-icon" aria-hidden="true">字</span>
+      <span class="tool-body">
+        <span class="tool-name">モジツール</span>
+        <span class="tool-desc">文字数カウント、テキスト整形、ダミーテキスト生成、テキスト差分比較など、文字まわりの作業をまとめたツール集。入力内容はサーバーに送信されません。</span>
+        <span class="tool-meta">Text &amp; character tools</span>
+      </span>
+    </a>
+    <a class="tool-card" href="https://colorquiz.labfond.com/">
+      <span class="tool-icon tool-icon-color" aria-hidden="true"></span>
+      <span class="tool-body">
+        <span class="tool-name">これは何色？</span>
+        <span class="tool-desc">表示された色を見て、正しい色名を4択で当てるクイズ。初級から和色を含む上級まで、レベル別に遊べます。正解後には色の由来や文化的な背景も紹介します。</span>
+        <span class="tool-meta">Color name quiz</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="doc-panel note">
+    <h2>このサイトについて</h2>
+    <p>labfond（ラボフォンド）は、個人で運営しているウェブツールとクイズのサイトです。日々の作業で「あると便利」なものや、楽しみながら知識が身につくものを、ひとつずつ作って公開しています。</p>
+    <p>すべてのツールは会員登録不要・無料で使えます。新しいツールができ次第、このページに追加していきます。</p>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 labfond</span>
+    <nav>
+      <a href="/">ツール一覧</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>

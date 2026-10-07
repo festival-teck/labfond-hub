@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://labfond.com/contact.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>お問い合わせ｜labfond</title>
+<meta name="description" content="labfondおよび各ツールへのお問い合わせはこちらから。">
+<meta property="og:title" content="お問い合わせ｜labfond">
+<meta property="og:description" content="labfondおよび各ツールへのお問い合わせはこちらから。">
+<meta property="og:url" content="https://labfond.com/contact.html">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --border: #e2e2e6; --text: #1a1a1e;
+    --text-sub: #6b6b74; --accent: #3b6ef6; --accent-soft: #eef2ff; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+      --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+    --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-footer {
+    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    font-size: 0.75rem; color: var(--text-sub);
+  }
+  .site-footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+  .site-footer a { color: var(--text-sub); text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+  .lead { color: var(--text-sub); font-size: 0.85rem; margin: 0 0 24px; line-height: 1.7; }
+  .doc-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .doc-panel h2 { font-size: 1rem; font-weight: 700; margin: 28px 0 10px; }
+  .doc-panel h2:first-child { margin-top: 0; }
+  .doc-panel p, .doc-panel li { font-size: 0.9rem; line-height: 1.85; }
+  .doc-panel ul { margin: 8px 0; padding-left: 1.4em; }
+  .doc-panel a { color: var(--accent); }
+  .profile-row { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.9rem; }
+  .profile-row .k { width: 96px; flex-shrink: 0; color: var(--text-sub); }
+  .updated { color: var(--text-sub); font-size: 0.8rem !important; margin-top: 24px; }
+  .form-btn {
+    display: inline-block; margin-top: 8px; padding: 12px 20px; border-radius: 10px;
+    background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  }
+  .form-btn:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="site-brand" href="/">labfond</a>
+  </header>
+
+  <h1>お問い合わせ</h1>
+  <p class="lead">labfond および各ツールに関するご意見・ご要望・不具合報告はこちらから承っております。</p>
+
+  <div class="doc-panel">
+    <p>下記フォームより、ご意見・ご要望・不具合のご報告などをお送りください。どのツールについてのお問い合わせか書き添えていただけると、スムーズに対応できます。</p>
+    <p>お問い合わせの内容によっては、返信までにお時間をいただく場合や、返信をいたしかねる場合がございます。あらかじめご了承ください。</p>
+    <a class="form-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSecIyIYPifc3Q76ht-NSiwC00PT657FbqJX7l6AP7DlQkcZMw/viewform" target="_blank" rel="noopener">お問い合わせフォームを開く</a>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 labfond</span>
+    <nav>
+      <a href="/">ツール一覧</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>

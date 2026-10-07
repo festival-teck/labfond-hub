@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://labfond.com/about.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>運営者情報｜labfond</title>
+<meta name="description" content="labfondの運営者情報です。">
+<meta property="og:title" content="運営者情報｜labfond">
+<meta property="og:description" content="labfondの運営者情報です。">
+<meta property="og:url" content="https://labfond.com/about.html">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --border: #e2e2e6; --text: #1a1a1e;
+    --text-sub: #6b6b74; --accent: #3b6ef6; --accent-soft: #eef2ff; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+      --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+    --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-footer {
+    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    font-size: 0.75rem; color: var(--text-sub);
+  }
+  .site-footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+  .site-footer a { color: var(--text-sub); text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+  .lead { color: var(--text-sub); font-size: 0.85rem; margin: 0 0 24px; line-height: 1.7; }
+  .doc-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .doc-panel h2 { font-size: 1rem; font-weight: 700; margin: 28px 0 10px; }
+  .doc-panel h2:first-child { margin-top: 0; }
+  .doc-panel p, .doc-panel li { font-size: 0.9rem; line-height: 1.85; }
+  .doc-panel ul { margin: 8px 0; padding-left: 1.4em; }
+  .doc-panel a { color: var(--accent); }
+  .profile-row { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.9rem; }
+  .profile-row .k { width: 96px; flex-shrink: 0; color: var(--text-sub); }
+  .updated { color: var(--text-sub); font-size: 0.8rem !important; margin-top: 24px; }
+  .form-btn {
+    display: inline-block; margin-top: 8px; padding: 12px 20px; border-radius: 10px;
+    background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  }
+  .form-btn:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="site-brand" href="/">labfond</a>
+  </header>
+
+  <h1>運営者情報</h1>
+  <p class="lead">labfond について</p>
+
+  <div class="doc-panel">
+    <h2>運営者</h2>
+    <div class="profile-row"><span class="k">サイト名</span><span>labfond</span></div>
+    <div class="profile-row"><span class="k">運営者名</span><span>FD</span></div>
+    <div class="profile-row"><span class="k">URL</span><span>https://labfond.com/</span></div>
+    <div class="profile-row"><span class="k">連絡先</span><span><a href="/contact.html">お問い合わせフォーム</a>よりご連絡ください</span></div>
+
+    <h2>サイトについて</h2>
+    <p>labfondは、ブラウザだけで使える無料のウェブツールやクイズを公開している個人運営のサイトです。会員登録やインストールは不要で、多くのツールはブラウザ内の処理のみで完結します。</p>
+    <p>QAエンジニアとしての実務経験をもとに、正確に動くこと・使いやすいことを大切にしながら、少しずつツールを増やしていく予定です。</p>
+
+    <h2>運営しているサイト</h2>
+    <ul>
+      <li><a href="https://moji.labfond.com/">モジツール</a>（文字数カウント・テキスト整形ツール）</li>
+      <li><a href="https://colorquiz.labfond.com/">これは何色？</a>（色名当てクイズ）</li>
+    </ul>
+
+    <h2>掲載情報について</h2>
+    <p>当サイトの各ツール・コンテンツは、できる限り正確に動作・記載するよう努めていますが、内容の正確性・完全性を保証するものではありません。重要な用途でご利用の際は、必ずご自身でのご確認をお願いいたします。</p>
+
+    <h2>広告について</h2>
+    <p>当サイトは、Google AdSenseなど第三者配信の広告サービスを利用する場合があります。詳細は<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。</p>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 labfond</span>
+    <nav>
+      <a href="/">ツール一覧</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>
