@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://labfond.com/articles/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK0SS0BLJ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GK0SS0BLJ9');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8669900012623128" crossorigin="anonymous"></script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>読みもの｜labfond</title>
+<meta name="description" content="labfondの読みもの一覧。ブラウザで動くツールの仕組み、単語を忘れにくくする学習のコツ、色の名前の言語による違いなど、言葉と学びにまつわる記事を掲載しています。">
+<meta property="og:title" content="読みもの｜labfond">
+<meta property="og:description" content="labfondの読みもの一覧。ブラウザで動くツールの仕組み、単語を忘れにくくする学習のコツ、色の名前の言語による違いなど、言葉と学びにまつわる記事を掲載しています。">
+<meta property="og:url" content="https://labfond.com/articles/">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --border: #e2e2e6; --text: #1a1a1e;
+    --text-sub: #6b6b74; --accent: #3b6ef6; --accent-soft: #eef2ff; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+      --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+    --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-footer {
+    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    font-size: 0.75rem; color: var(--text-sub);
+  }
+  .site-footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+  .site-footer a { color: var(--text-sub); text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+  .lead { color: var(--text-sub); font-size: 0.85rem; margin: 0 0 24px; line-height: 1.7; }
+  .doc-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .doc-panel h2 { font-size: 1rem; font-weight: 700; margin: 28px 0 10px; }
+  .doc-panel h2:first-child { margin-top: 0; }
+  .doc-panel p, .doc-panel li { font-size: 0.9rem; line-height: 1.85; }
+  .doc-panel ul { margin: 8px 0; padding-left: 1.4em; }
+  .doc-panel a { color: var(--accent); }
+  .profile-row { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.9rem; }
+  .profile-row .k { width: 96px; flex-shrink: 0; color: var(--text-sub); }
+  .updated { color: var(--text-sub); font-size: 0.8rem !important; margin-top: 24px; }
+  .form-btn {
+    display: inline-block; margin-top: 8px; padding: 12px 20px; border-radius: 10px;
+    background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  }
+  .form-btn:hover { opacity: 0.9; }
+  .hero { padding: 20px 0 8px; }
+  .hero h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 10px; }
+  .hero .lead { font-size: 0.95rem; margin-bottom: 6px; color: var(--text); }
+  .hero .lead.en { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 28px; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; margin: 0 0 12px; }
+  .tool-grid { display: grid; gap: 12px; margin-bottom: 28px; }
+  .tool-card {
+    display: flex; gap: 16px; align-items: flex-start; padding: 18px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; color: var(--text); transition: border-color .15s, transform .15s;
+  }
+  .tool-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .tool-icon {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;
+  }
+  .tool-icon-color { background: conic-gradient(#e0503c, #f2b33d, #4cb36b, #3b6ef6, #9b5de5, #e0503c); }
+  .tool-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .tool-name { font-weight: 700; font-size: 1rem; }
+  .tool-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-sub); }
+  .tool-meta { font-size: 0.72rem; color: var(--accent); margin-top: 2px; }
+  .note { margin-top: 4px; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="site-brand" href="/">labfond</a>
+  </header>
+
+  <h1>読みもの</h1>
+  <p class="lead">言葉と学び、そしてツールにまつわる記事です。各サイトの解説ページへの入り口もまとめています。</p>
+    <ul class="article-list">
+      <li><a href="/articles/browser-tools-privacy.html">入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方</a><p>文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。</p></li>
+      <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
+      <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
+    </ul>
+  <div class="tools-detail">
+    <h2>各サイトの解説ページ</h2>
+    <ul class="article-list">
+      <li><a href="https://moji.labfond.com/guide.html">モジツールの読みもの</a><p>用途別の文字数の目安、全角・半角とバイト数の違い、テストで試したい文字（サロゲートペア・機種依存文字）など。</p></li>
+      <li><a href="https://colorquiz.labfond.com/guide.html">色の読みもの</a><p>和色（日本の伝統色）図鑑、カラーコードの読み方、間違えやすい色名の違いなど。</p></li>
+      <li><a href="https://tesdori.labfond.com/explain.html">テスドリの問題解説</a><p>JSTQBシラバスの章ごとの解説と、テスト技術者向けの用語集。</p></li>
+    </ul>
+  </div>
+  <footer class="site-footer">
+    <span>© 2026 labfond</span>
+    <nav>
+      <a href="/">ツール一覧</a>
+      <a href="/articles/">読みもの</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>

@@ -18,9 +18,9 @@
 <link rel="icon" href="/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>labfond｜言葉と学びのちいさな道具箱</title>
-<meta name="description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを公開しています。">
+<meta name="description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを、使い方の解説や読みものとあわせて公開しています。">
 <meta property="og:title" content="labfond｜言葉と学びのちいさな道具箱">
-<meta property="og:description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを公開しています。">
+<meta property="og:description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを、使い方の解説や読みものとあわせて公開しています。">
 <meta property="og:url" content="https://labfond.com/">
 <meta property="og:type" content="website">
 <style>
@@ -96,6 +96,69 @@
   .tool-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-sub); }
   .tool-meta { font-size: 0.72rem; color: var(--accent); margin-top: 2px; }
   .note { margin-top: 4px; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
 </style>
 </head>
 <body>
@@ -154,16 +217,155 @@
     </a>
   </div>
 
+  <div class="tools-detail">
+    <h2>それぞれのツールでできること</h2>
+
+    <div class="tool-sec">
+      <h3>モジツール ― 文字数カウントとテキスト整形</h3>
+      <p>文章の文字数・行数・バイト数をその場で数えるツールです。X（旧Twitter）やInstagramなど用途ごとの上限に収まっているかをゲージで確認でき、Xでは日本語を1文字＝2として数える公式の方式で計算します。全角・半角の変換、余分な空白や改行の削除、ダミーテキストやテスト用の文字列の生成、2つの文章の差分比較もできます。</p>
+      <p>入力した文章はブラウザの中だけで処理され、サーバーには送られません。エントリーシートやSNSの下書き、Webサイトの入力欄のテストなど、文字数を気にする場面で使えます。</p>
+      <p class="links"><a href="https://moji.labfond.com/">ツールを使う</a><a href="https://moji.labfond.com/guide-limits.html">用途別の文字数の目安</a><a href="https://moji.labfond.com/guide-bytes.html">全角・半角とバイト数</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>これは何色？ ― 色の名前当てクイズ</h3>
+      <p>表示された色を見て、正しい色の名前を選ぶクイズです。赤や青などの定番の色から、紅（くれない）や浅葱色（あさぎいろ）といった日本の伝統色、カラーコードの見分けまで、5つのレベルがあります。正解したあとには、その色の由来や使われ方が表示されます。</p>
+      <p>和色図鑑やカラーコードの読み方など、クイズと一緒に読める解説ページもあります。デザインの仕事で色の名前を正確に覚えたい人や、日本の色の文化に興味がある人におすすめです。</p>
+      <p class="links"><a href="https://colorquiz.labfond.com/">クイズで遊ぶ</a><a href="https://colorquiz.labfond.com/wairo.html">和色図鑑</a><a href="https://colorquiz.labfond.com/hex-color-code.html">カラーコードの読み方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>多言語クロスワード ― 日本語・한국어・English</h3>
+      <p>日本語・韓国語・英語の3つの言語で遊べるクロスワードパズルです。果物・動物・国など8つのお題と、初級・中級・上級の3つの難易度から選ぶと、その場でパズルが自動で作られます。ヒントは選んだ言語で書かれているので、韓国語や英語の単語を、意味と一緒に覚える練習にもなります。</p>
+      <p class="links"><a href="https://crossword.labfond.com/">パズルで遊ぶ</a><a href="https://crossword.labfond.com/howto.html">遊び方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>世界の言葉でなんて言う？ ― 多言語単語辞典</h3>
+      <p>日本語の単語を、英語・フランス語・イタリア語・スペイン語・ドイツ語・韓国語・中国語で一覧にして表示する辞典です。カタカナでの読み方の目安、発音記号、名詞の性、音声に加えて、名前や作品に使う前に知っておきたい「避けたほうがよい意味」も確認できます。</p>
+      <p class="links"><a href="https://kotoba.labfond.com/">辞典を使う</a><a href="https://kotoba.labfond.com/words/">収録語一覧</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>テスドリ ― JSTQB 練習問題（非公式）</h3>
+      <p>ソフトウェアテストの資格「JSTQB認定テスト技術者資格」の Foundation Level と Advanced Level テストマネジメントに対応した、オリジナルの練習問題サイトです。章ごとの演習と本番形式の模擬試験に加えて、シラバスの節ごとの解説や用語集も用意しています。運営者のQAエンジニアとしての実務経験をもとに作成しています。</p>
+      <p class="links"><a href="https://tesdori.labfond.com/">問題を解く</a><a href="https://tesdori.labfond.com/explain.html">問題解説</a><a href="https://tesdori.labfond.com/glossary.html">用語集</a></p>
+    </div>
+  </div>
+
+  <div class="tools-detail">
+    <h2>読みもの</h2>
+    <p class="lead">ツールを使う人に役立つ、言葉と学びにまつわる記事です。</p>
+    <ul class="article-list">
+      <li><a href="/articles/browser-tools-privacy.html">入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方</a><p>文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。</p></li>
+      <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
+      <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
+    </ul>
+  </div>
+
+  <div class="tools-detail">
+    <h2>それぞれのツールでできること</h2>
+
+    <div class="tool-sec">
+      <h3>モジツール ― 文字数カウントとテキスト整形</h3>
+      <p>文章の文字数・行数・バイト数をその場で数えるツールです。X（旧Twitter）やInstagramなど用途ごとの上限に収まっているかをゲージで確認でき、Xでは日本語を1文字＝2として数える公式の方式で計算します。全角・半角の変換、余分な空白や改行の削除、ダミーテキストやテスト用の文字列の生成、2つの文章の差分比較もできます。</p>
+      <p>入力した文章はブラウザの中だけで処理され、サーバーには送られません。エントリーシートやSNSの下書き、Webサイトの入力欄のテストなど、文字数を気にする場面で使えます。</p>
+      <p class="links"><a href="https://moji.labfond.com/">ツールを使う</a><a href="https://moji.labfond.com/guide-limits.html">用途別の文字数の目安</a><a href="https://moji.labfond.com/guide-bytes.html">全角・半角とバイト数</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>これは何色？ ― 色の名前当てクイズ</h3>
+      <p>表示された色を見て、正しい色の名前を選ぶクイズです。赤や青などの定番の色から、紅（くれない）や浅葱色（あさぎいろ）といった日本の伝統色、カラーコードの見分けまで、5つのレベルがあります。正解したあとには、その色の由来や使われ方が表示されます。</p>
+      <p>和色図鑑やカラーコードの読み方など、クイズと一緒に読める解説ページもあります。デザインの仕事で色の名前を正確に覚えたい人や、日本の色の文化に興味がある人におすすめです。</p>
+      <p class="links"><a href="https://colorquiz.labfond.com/">クイズで遊ぶ</a><a href="https://colorquiz.labfond.com/wairo.html">和色図鑑</a><a href="https://colorquiz.labfond.com/hex-color-code.html">カラーコードの読み方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>多言語クロスワード ― 日本語・한국어・English</h3>
+      <p>日本語・韓国語・英語の3つの言語で遊べるクロスワードパズルです。果物・動物・国など8つのお題と、初級・中級・上級の3つの難易度から選ぶと、その場でパズルが自動で作られます。ヒントは選んだ言語で書かれているので、韓国語や英語の単語を、意味と一緒に覚える練習にもなります。</p>
+      <p class="links"><a href="https://crossword.labfond.com/">パズルで遊ぶ</a><a href="https://crossword.labfond.com/howto.html">遊び方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>世界の言葉でなんて言う？ ― 多言語単語辞典</h3>
+      <p>日本語の単語を、英語・フランス語・イタリア語・スペイン語・ドイツ語・韓国語・中国語で一覧にして表示する辞典です。カタカナでの読み方の目安、発音記号、名詞の性、音声に加えて、名前や作品に使う前に知っておきたい「避けたほうがよい意味」も確認できます。</p>
+      <p class="links"><a href="https://kotoba.labfond.com/">辞典を使う</a><a href="https://kotoba.labfond.com/words/">収録語一覧</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>テスドリ ― JSTQB 練習問題（非公式）</h3>
+      <p>ソフトウェアテストの資格「JSTQB認定テスト技術者資格」の Foundation Level と Advanced Level テストマネジメントに対応した、オリジナルの練習問題サイトです。章ごとの演習と本番形式の模擬試験に加えて、シラバスの章ごとの解説や用語集も用意しています。運営者のQAエンジニアとしての実務経験をもとに作成しています。</p>
+      <p class="links"><a href="https://tesdori.labfond.com/">問題を解く</a><a href="https://tesdori.labfond.com/explain.html">問題解説</a><a href="https://tesdori.labfond.com/glossary.html">用語集</a></p>
+    </div>
+  </div>
+
+  <div class="tools-detail">
+    <h2>読みもの</h2>
+    <p class="lead">ツールを使う人に役立つ、言葉と学びにまつわる記事です。</p>
+    <ul class="article-list">
+      <li><a href="/articles/browser-tools-privacy.html">入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方</a><p>文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。</p></li>
+      <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
+      <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
+    </ul>
+  </div>
+
+  <div class="tools-detail">
+    <h2>それぞれのツールでできること</h2>
+
+    <div class="tool-sec">
+      <h3>モジツール ― 文字数カウントとテキスト整形</h3>
+      <p>文章の文字数・行数・バイト数をその場で数えるツールです。X（旧Twitter）やInstagramなど用途ごとの上限に収まっているかをゲージで確認でき、Xでは日本語を1文字＝2として数える公式の方式で計算します。全角・半角の変換、余分な空白や改行の削除、ダミーテキストやテスト用の文字列の生成、2つの文章の差分比較もできます。</p>
+      <p>入力した文章はブラウザの中だけで処理され、サーバーには送られません。エントリーシートやSNSの下書き、Webサイトの入力欄のテストなど、文字数を気にする場面で使えます。</p>
+      <p class="links"><a href="https://moji.labfond.com/">ツールを使う</a><a href="https://moji.labfond.com/guide-limits.html">用途別の文字数の目安</a><a href="https://moji.labfond.com/guide-bytes.html">全角・半角とバイト数</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>これは何色？ ― 色の名前当てクイズ</h3>
+      <p>表示された色を見て、正しい色の名前を選ぶクイズです。赤や青などの定番の色から、紅（くれない）や浅葱色（あさぎいろ）といった日本の伝統色、カラーコードの見分けまで、5つのレベルがあります。正解したあとには、その色の由来や使われ方が表示されます。</p>
+      <p>和色図鑑やカラーコードの読み方など、クイズと一緒に読める解説ページもあります。デザインの仕事で色の名前を正確に覚えたい人や、日本の色の文化に興味がある人におすすめです。</p>
+      <p class="links"><a href="https://colorquiz.labfond.com/">クイズで遊ぶ</a><a href="https://colorquiz.labfond.com/wairo.html">和色図鑑</a><a href="https://colorquiz.labfond.com/hex-color-code.html">カラーコードの読み方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>多言語クロスワード ― 日本語・한국어・English</h3>
+      <p>日本語・韓国語・英語の3つの言語で遊べるクロスワードパズルです。果物・動物・国など8つのお題と、初級・中級・上級の3つの難易度から選ぶと、その場でパズルが自動で作られます。ヒントは選んだ言語で書かれているので、韓国語や英語の単語を、意味と一緒に覚える練習にもなります。</p>
+      <p class="links"><a href="https://crossword.labfond.com/">パズルで遊ぶ</a><a href="https://crossword.labfond.com/howto.html">遊び方</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>世界の言葉でなんて言う？ ― 多言語単語辞典</h3>
+      <p>日本語の単語を、英語・フランス語・イタリア語・スペイン語・ドイツ語・韓国語・中国語で一覧にして表示する辞典です。カタカナでの読み方の目安、発音記号、名詞の性、音声に加えて、名前や作品に使う前に知っておきたい「避けたほうがよい意味」も確認できます。</p>
+      <p class="links"><a href="https://kotoba.labfond.com/">辞典を使う</a><a href="https://kotoba.labfond.com/words/">収録語一覧</a></p>
+    </div>
+
+    <div class="tool-sec">
+      <h3>テスドリ ― JSTQB 練習問題（非公式）</h3>
+      <p>ソフトウェアテストの資格「JSTQB認定テスト技術者資格」の Foundation Level と Advanced Level テストマネジメントに対応した、オリジナルの練習問題サイトです。章ごとの演習と本番形式の模擬試験に加えて、シラバスの章ごとの解説や用語集も用意しています。運営者のQAエンジニアとしての実務経験をもとに作成しています。</p>
+      <p class="links"><a href="https://tesdori.labfond.com/">問題を解く</a><a href="https://tesdori.labfond.com/explain.html">問題解説</a><a href="https://tesdori.labfond.com/glossary.html">用語集</a></p>
+    </div>
+  </div>
+
+  <div class="tools-detail">
+    <h2>読みもの</h2>
+    <p class="lead">ツールを使う人に役立つ、言葉と学びにまつわる記事です。</p>
+    <ul class="article-list">
+      <li><a href="/articles/browser-tools-privacy.html">入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方</a><p>文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。</p></li>
+      <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
+      <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
+    </ul>
+  </div>
+
   <div class="doc-panel note">
     <h2>このサイトについて</h2>
-    <p>labfond（ラボフォンド）は、個人で運営しているウェブツールとクイズのサイトです。日々の作業で「あると便利」なものや、楽しみながら知識が身につくものを、ひとつずつ作って公開しています。</p>
-    <p>すべてのツールは会員登録不要・無料で使えます。新しいツールができ次第、このページに追加していきます。</p>
+    <p>labfond（ラボフォンド）は、QAエンジニアのFDが個人で運営している、ウェブツールとクイズのサイトです。日々の作業で「あると便利」なものや、楽しみながら知識が身につくものを、ひとつずつ作って公開しています。</p>
+    <p>すべてのツールは会員登録不要・無料で使えます。入力した内容をできるだけ外部に送らない作りにすること、計算や説明が正しいことを確かめてから公開することを大切にしています。<a href="/about.html">運営者情報</a>もご覧ください。</p>
   </div>
 
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
       <a href="/">ツール一覧</a>
+      <a href="/articles/">読みもの</a>
       <a href="/about.html">運営者情報</a>
       <a href="/privacy.html">プライバシーポリシー</a>
       <a href="/contact.html">お問い合わせ</a>

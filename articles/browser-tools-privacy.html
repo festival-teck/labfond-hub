@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://labfond.com/articles/browser-tools-privacy.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK0SS0BLJ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GK0SS0BLJ9');
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8669900012623128" crossorigin="anonymous"></script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方｜labfond</title>
+<meta name="description" content="文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。">
+<meta property="og:title" content="入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方｜labfond">
+<meta property="og:description" content="文字数カウントなどの無料ツールに文章を貼り付けても大丈夫？ブラウザ内で処理が完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。">
+<meta property="og:url" content="https://labfond.com/articles/browser-tools-privacy.html">
+<meta property="og:type" content="article">
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --border: #e2e2e6; --text: #1a1a1e;
+    --text-sub: #6b6b74; --accent: #3b6ef6; --accent-soft: #eef2ff; --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+      --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #201f23; --border: #34333a; --text: #f0f0f2;
+    --text-sub: #9b9aa3; --accent: #6f93ff; --accent-soft: #262a3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
+  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-footer {
+    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+    font-size: 0.75rem; color: var(--text-sub);
+  }
+  .site-footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+  .site-footer a { color: var(--text-sub); text-decoration: none; }
+  .site-footer a:hover { color: var(--accent); }
+  h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 4px; }
+  .lead { color: var(--text-sub); font-size: 0.85rem; margin: 0 0 24px; line-height: 1.7; }
+  .doc-panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .doc-panel h2 { font-size: 1rem; font-weight: 700; margin: 28px 0 10px; }
+  .doc-panel h2:first-child { margin-top: 0; }
+  .doc-panel p, .doc-panel li { font-size: 0.9rem; line-height: 1.85; }
+  .doc-panel ul { margin: 8px 0; padding-left: 1.4em; }
+  .doc-panel a { color: var(--accent); }
+  .profile-row { display: flex; gap: 16px; margin-bottom: 8px; font-size: 0.9rem; }
+  .profile-row .k { width: 96px; flex-shrink: 0; color: var(--text-sub); }
+  .updated { color: var(--text-sub); font-size: 0.8rem !important; margin-top: 24px; }
+  .form-btn {
+    display: inline-block; margin-top: 8px; padding: 12px 20px; border-radius: 10px;
+    background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  }
+  .form-btn:hover { opacity: 0.9; }
+  .hero { padding: 20px 0 8px; }
+  .hero h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 10px; }
+  .hero .lead { font-size: 0.95rem; margin-bottom: 6px; color: var(--text); }
+  .hero .lead.en { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 28px; }
+  .section-title { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; margin: 0 0 12px; }
+  .tool-grid { display: grid; gap: 12px; margin-bottom: 28px; }
+  .tool-card {
+    display: flex; gap: 16px; align-items: flex-start; padding: 18px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; color: var(--text); transition: border-color .15s, transform .15s;
+  }
+  .tool-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .tool-icon {
+    flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;
+  }
+  .tool-icon-color { background: conic-gradient(#e0503c, #f2b33d, #4cb36b, #3b6ef6, #9b5de5, #e0503c); }
+  .tool-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .tool-name { font-weight: 700; font-size: 1rem; }
+  .tool-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-sub); }
+  .tool-meta { font-size: 0.72rem; color: var(--accent); margin-top: 2px; }
+  .note { margin-top: 4px; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+
+  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
+  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
+  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
+  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
+  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
+  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
+  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
+  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
+  .article-list a:hover { color: var(--accent); }
+  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
+  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2:first-child { margin-top: 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
+  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
+  .article th { color: var(--text-sub); font-size: 0.8rem; }
+  .article a { color: var(--accent); }
+  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
+  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
+  .tbl { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="site-brand" href="/">labfond</a>
+  </header>
+
+  <h1>入力した文章はどこへ行く？<br>ブラウザだけで動くツールの仕組みと確かめ方</h1>
+  <p class="meta">公開日：2026年11月2日｜運営者：FD</p>
+  <div class="article">
+    <h2>「貼り付けても大丈夫？」という不安</h2>
+    <p>文字数を数えたい、全角を半角に直したい――そんなとき、検索して見つけた無料ツールに文章を貼り付けることはよくあります。ただ、エントリーシートの下書きや社内の文書など、人に見せたくない文章を入れるときは「この内容はどこかに送られていないだろうか」と気になるものです。</p>
+    <p>この記事では、ウェブのツールが入力内容を扱う2つの方式と、データが外部に送られていないかを自分で確かめる方法を紹介します。</p>
+
+    <h2>ツールの処理方式は大きく2種類</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>方式</th><th>処理する場所</th><th>入力内容の行き先</th></tr></thead>
+      <tbody>
+        <tr><td>サーバー処理型</td><td>ツールを運営する会社のサーバー</td><td>インターネットを通じてサーバーに送られ、処理結果が返ってくる</td></tr>
+        <tr><td>ブラウザ処理型</td><td>あなたのパソコンやスマホのブラウザ</td><td>ページ内のプログラム（JavaScript）がその場で計算し、外には送られない</td></tr>
+      </tbody>
+    </table></div>
+    <p>文字数を数える、全角と半角を変換する、2つの文章を比べる、といった処理は、ブラウザの中だけで十分に実行できます。labfond のツールは、このブラウザ処理型で作っています。</p>
+    <p class="note-box">サーバー処理型が悪いわけではありません。翻訳や画像の高度な加工など、大きな計算が必要な処理はサーバーで行うのが一般的です。大切なのは、使うツールがどちらの方式なのかを知っておくことです。</p>
+
+    <h2>自分で確かめる方法：開発者ツールの「ネットワーク」タブ</h2>
+    <p>パソコンのブラウザ（Chrome・Edge・Firefox・Safari など）には、ページがどんな通信をしているかを見られる「開発者ツール」が備わっています。</p>
+    <ol>
+      <li>ツールのページを開き、キーボードの <b>F12</b> を押します（Mac の場合は <b>Command＋Option＋I</b>）。Safari では、先に設定で開発者向けの機能を有効にしておく必要があります。</li>
+      <li>開いた画面で「<b>ネットワーク</b>（Network）」タブを選びます。</li>
+      <li>その状態で、入力欄に文章を貼り付けたり、ボタンを押したりしてみます。</li>
+      <li>一覧に新しい通信が増えるかを確認します。文章を入れても通信が増えなければ、その操作では何も送られていないことが分かります。</li>
+    </ol>
+    <p>通信が増えた場合は、その行をクリックすると、送られた内容（「ペイロード」や「リクエスト」）を確認できます。入力した文章がそこに含まれていれば、サーバーに送られています。</p>
+
+    <h2>「送られない」と「保存されない」は別の話</h2>
+    <p>ブラウザ処理型のツールでも、入力内容を<b>あなたのブラウザの中に保存</b>することがあります。たとえばモジツールは、書きかけの文章が消えないように、ブラウザ内の保存領域（ローカルストレージ）に下書きを自動保存しています。これらはあなたの端末の中だけにあり、ほかの人やサーバーからは見えません。</p>
+    <p>共用のパソコンで使ったあとに内容を残したくない場合は、ツールの「クリア」ボタンで消すか、ブラウザの「閲覧データの削除」でサイトのデータを削除してください。</p>
+
+    <h2>アクセス解析で送られるもの</h2>
+    <p>多くのサイトと同じく、labfond でも、どのページがどれくらい見られているかを知るために Google アナリティクスを使っています。ここで送られるのは、開いたページのアドレスや、おおまかな利用環境（ブラウザの種類など）です。<b>入力欄に書いた文章の中身は送られません。</b>詳しくは<a href="/privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+
+    <h2>まとめ</h2>
+    <ul>
+      <li>ウェブのツールには「サーバー処理型」と「ブラウザ処理型」がある</li>
+      <li>開発者ツールの「ネットワーク」タブで、入力時に通信が発生するかを自分で確かめられる</li>
+      <li>ブラウザ内に保存されるデータは、クリアやブラウザの設定で削除できる</li>
+    </ul>
+    <p>大事な文章を扱うときほど、ツールの仕組みを一度確かめておくと安心です。</p>
+    <h2>関連するツール</h2>
+    <ul>
+      <li><a href="https://moji.labfond.com/">モジツール</a>（文字数カウント・テキスト整形）</li>
+      <li><a href="https://moji.labfond.com/guide-test-chars.html">サロゲートペア・機種依存文字とは</a>（入力フォームのテストで試したい文字）</li>
+    </ul>
+  </div>
+
+  <div class="tools-detail">
+    <h2>ほかの読みもの</h2>
+    <ul class="article-list">
+      <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
+      <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
+    </ul>
+  </div>
+  <footer class="site-footer">
+    <span>© 2026 labfond</span>
+    <nav>
+      <a href="/">ツール一覧</a>
+      <a href="/articles/">読みもの</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/contact.html">お問い合わせ</a>
+    </nav>
+  </footer>
+</div>
+</body>
+</html>
