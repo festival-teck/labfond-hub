@@ -44,13 +44,16 @@
     background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
     padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
-    display: flex; flex-direction: column; align-items: center;
   }
-  .wrap { width: 100%; max-width: 780px; padding: 24px 0 40px; }
-  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 8px; }
-  .site-brand { font-size: 0.95rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 20px 0 40px; }
+  .wrap.wide { max-width: 1080px; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 12px; flex-wrap: wrap; }
+  .site-brand { font-size: 1.05rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: 0.04em; }
+  .site-nav { display: flex; gap: 18px; font-size: 0.85rem; }
+  .site-nav a { color: var(--text-sub); text-decoration: none; }
+  .site-nav a:hover { color: var(--accent); }
   .site-footer {
-    margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border);
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border);
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
     font-size: 0.75rem; color: var(--text-sub);
   }
@@ -73,43 +76,18 @@
     background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 700; font-size: 0.9rem;
   }
   .form-btn:hover { opacity: 0.9; }
-  .hero { padding: 20px 0 8px; }
-  .hero h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 10px; }
-  .hero .lead { font-size: 0.95rem; margin-bottom: 6px; color: var(--text); }
-  .hero .lead.en { font-size: 0.82rem; color: var(--text-sub); margin-bottom: 28px; }
-  .section-title { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); letter-spacing: 0.06em; margin: 0 0 12px; }
-  .tool-grid { display: grid; gap: 12px; margin-bottom: 28px; }
-  .tool-card {
-    display: flex; gap: 16px; align-items: flex-start; padding: 18px;
-    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-    text-decoration: none; color: var(--text); transition: border-color .15s, transform .15s;
-  }
-  .tool-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .tool-icon {
-    flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
-    background: var(--accent-soft); color: var(--accent);
-    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;
-  }
-  .tool-icon-color { background: conic-gradient(#e0503c, #f2b33d, #4cb36b, #3b6ef6, #9b5de5, #e0503c); }
-  .tool-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .tool-name { font-weight: 700; font-size: 1rem; }
-  .tool-desc { font-size: 0.85rem; line-height: 1.7; color: var(--text-sub); }
-  .tool-meta { font-size: 0.72rem; color: var(--accent); margin-top: 2px; }
-  .note { margin-top: 4px; }
-
-  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
-  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
-  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
-  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
-  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
-  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 40px 0 14px; }
+  .section-head h2 { font-size: 1.2rem; font-weight: 800; margin: 0; }
+  .section-head a { font-size: 0.85rem; color: var(--accent); text-decoration: none; white-space: nowrap; }
   .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
   .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
   .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
   .article-list a:hover { color: var(--accent); }
   .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
   .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
+  .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
   .article h2:first-child { margin-top: 0; }
+  .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
   .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
   .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
   .article th { color: var(--text-sub); font-size: 0.8rem; }
@@ -117,54 +95,18 @@
   .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
   .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
   .tbl { overflow-x: auto; }
-
-  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
-  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
-  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
-  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
-  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
-  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
-  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
-  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
-  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
-  .article-list a:hover { color: var(--accent); }
-  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
-  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
-  .article h2:first-child { margin-top: 0; }
-  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
-  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
-  .article th { color: var(--text-sub); font-size: 0.8rem; }
-  .article a { color: var(--accent); }
-  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
-  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
-  .tbl { overflow-x: auto; }
-
-  .tools-detail h2, .article h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 8px; }
-  .tools-detail h3 { font-size: 1rem; margin: 0 0 6px; }
-  .tool-sec { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; }
-  .tool-sec p, .article p, .article li { font-size: 0.92rem; line-height: 1.9; }
-  .tool-sec .links { font-size: 0.85rem; margin: 8px 0 0; }
-  .tool-sec .links a { margin-right: 14px; color: var(--accent); }
-  .article-list { list-style: none; padding: 0; margin: 0 0 12px; }
-  .article-list li { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px; }
-  .article-list a { font-weight: 700; color: var(--text); text-decoration: none; }
-  .article-list a:hover { color: var(--accent); }
-  .article-list p { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-sub); line-height: 1.7; }
-  .article { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 10px; }
-  .article h2:first-child { margin-top: 0; }
-  .article table { border-collapse: collapse; width: 100%; font-size: 0.88rem; margin: 8px 0 16px; }
-  .article th, .article td { border-bottom: 1px solid var(--border); padding: 8px 6px; text-align: left; vertical-align: top; }
-  .article th { color: var(--text-sub); font-size: 0.8rem; }
-  .article a { color: var(--accent); }
-  .meta { color: var(--text-sub); font-size: 0.8rem; margin: -2px 0 18px; }
-  .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
-  .tbl { overflow-x: auto; }
+  .more h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 10px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site-header">
     <a class="site-brand" href="/">labfond</a>
+    <nav class="site-nav">
+      <a href="/#tools">ツール</a>
+      <a href="/articles/">コラム</a>
+      <a href="/about.html">運営者情報</a>
+    </nav>
   </header>
 
   <h1>入力した文章はどこへ行く？<br>ブラウザだけで動くツールの仕組みと確かめ方</h1>
@@ -216,8 +158,8 @@
     </ul>
   </div>
 
-  <div class="tools-detail">
-    <h2>ほかの読みもの</h2>
+  <div class="more">
+    <h2>ほかのコラム</h2>
     <ul class="article-list">
       <li><a href="/articles/word-memory.html">覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</a><p>外国語の単語をなかなか覚えられない人へ。学習の研究で知られる「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p></li>
       <li><a href="/articles/aoshingou.html">青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</a><p>緑色に見える信号を、なぜ日本語では「青信号」と呼ぶのか。呼び名の歴史と、日本語・英語・韓国語の色の名前の違いをくらべながら紹介します。</p></li>
@@ -226,8 +168,8 @@
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
-      <a href="/">ツール一覧</a>
-      <a href="/articles/">読みもの</a>
+      <a href="/">トップ</a>
+      <a href="/articles/">コラム</a>
       <a href="/about.html">運営者情報</a>
       <a href="/privacy.html">プライバシーポリシー</a>
       <a href="/contact.html">お問い合わせ</a>
