@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>お問い合わせ｜labfond</title>
+<title data-en="Contact｜labfond">お問い合わせ｜labfond</title>
 <meta name="description" content="labfondおよび各ツールへのお問い合わせはこちらから。">
 <meta property="og:title" content="お問い合わせ｜labfond">
 <meta property="og:description" content="labfondおよび各ツールへのお問い合わせはこちらから。">
@@ -96,19 +96,32 @@
   .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
   .tbl { overflow-x: auto; }
   .more h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 10px; }
+
+  /* language toggle & clickable cards */
+  .header-right { display: flex; align-items: center; gap: 18px; }
+  .lang-toggle { background: var(--panel); border: 1.5px solid var(--border); color: var(--text-sub); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  [data-lang][hidden] { display: none !important; }
+  .article-list li { position: relative; transition: border-color .15s; }
+  .article-list li:hover { border-color: var(--accent); }
+  .article-list li > a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site-header">
     <a class="site-brand" href="/">labfond</a>
-    <nav class="site-nav">
-      <a href="/#tools">ツール</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="/#tools" data-en="Tools">ツール</a>
+        <a href="/articles/" data-en="Columns">コラム</a>
+        <a href="/about.html" data-en="About">運営者情報</a>
+      </nav>
+      <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
+    </div>
   </header>
 
+  <div data-lang="ja">
   <h1>お問い合わせ</h1>
   <p class="lead">labfond および各ツールに関するご意見・ご要望・不具合報告はこちらから承っております。</p>
 
@@ -117,17 +130,49 @@
     <p>お問い合わせの内容によっては、返信までにお時間をいただく場合や、返信をいたしかねる場合がございます。あらかじめご了承ください。</p>
     <a class="form-btn" href="https://docs.google.com/forms/d/1ul9e318yHhixHOjYTOZlA2eYhhNiN5sS4JxnIKr2HPA/viewform" target="_blank" rel="noopener">お問い合わせフォームを開く</a>
   </div>
+  </div>
+  <div data-lang="en" hidden>
+  <h1>Contact</h1>
+  <p class="lead">Send feedback, requests or bug reports about labfond and its tools here.</p>
+  <div class="doc-panel">
+    <p>Please use the form below to send feedback, requests or bug reports. Letting me know which tool your message is about helps me respond smoothly. You are welcome to write in English.</p>
+    <p>Depending on the content, a reply may take some time, or I may be unable to reply. Thank you for your understanding.</p>
+    <a class="form-btn" href="https://docs.google.com/forms/d/1ul9e318yHhixHOjYTOZlA2eYhhNiN5sS4JxnIKr2HPA/viewform" target="_blank" rel="noopener">Open the contact form</a>
+  </div>
+  </div>
 
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
-      <a href="/">トップ</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/contact.html">お問い合わせ</a>
+      <a href="/" data-en="Home">トップ</a>
+      <a href="/articles/" data-en="Columns">コラム</a>
+      <a href="/about.html" data-en="About">運営者情報</a>
+      <a href="/privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
+      <a href="/contact.html" data-en="Contact">お問い合わせ</a>
     </nav>
   </footer>
 </div>
+<script>
+(function () {
+  var KEY = "labfond-lang", lang = "ja";
+  try { if (localStorage.getItem(KEY) === "en") lang = "en"; } catch (e) {}
+  var btn = document.getElementById("lang-toggle");
+  function apply() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== lang; });
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      if (!el.hasAttribute("data-ja")) el.setAttribute("data-ja", el.innerHTML);
+      el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-ja");
+    });
+    if (btn) btn.textContent = lang === "en" ? "日本語" : "EN";
+  }
+  if (btn) btn.addEventListener("click", function () {
+    lang = lang === "en" ? "ja" : "en";
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
 </body>
 </html>

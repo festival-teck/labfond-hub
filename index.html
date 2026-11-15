@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>labfond｜言葉と学びのちいさな道具箱</title>
+<title data-en="labfond — A small toolbox for words and learning">labfond｜言葉と学びのちいさな道具箱</title>
 <meta name="description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを、使い方の解説やコラムとあわせて公開しています。">
 <meta property="og:title" content="labfond｜言葉と学びのちいさな道具箱">
 <meta property="og:description" content="文字数カウントのモジツール、色名当てクイズ「これは何色？」、多言語クロスワード、多言語単語辞典、JSTQB練習問題など、ブラウザだけで使える無料のウェブツールと学習コンテンツを、使い方の解説やコラムとあわせて公開しています。">
@@ -138,136 +138,185 @@
     .hero h1 { font-size: 1.6rem; }
     .tool-grid, .col-grid { grid-template-columns: 1fr; }
   }
+
+  /* language toggle & clickable cards */
+  .header-right { display: flex; align-items: center; gap: 18px; }
+  .lang-toggle { background: var(--panel); border: 1.5px solid var(--border); color: var(--text-sub); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  [data-lang][hidden] { display: none !important; }
+  .article-list li { position: relative; transition: border-color .15s; }
+  .article-list li:hover { border-color: var(--accent); }
+  .article-list li > a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+
+  .tool-card { position: relative; transition: border-color .15s, transform .15s; }
+  .tool-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .tool-name a { color: var(--text); text-decoration: none; }
+  .tool-name a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+  .tool-top { padding-right: 28px; }
+  .tool-arrow { position: absolute; top: 20px; right: 20px; color: var(--text-sub); font-size: 1.1rem; transition: color .15s, transform .15s; }
+  .tool-card:hover .tool-arrow { color: var(--accent); transform: translateX(3px); }
+  .tool-links a { position: relative; z-index: 1; }
+  .tool-links .lbl { font-size: 0.75rem; color: var(--text-sub); }
 </style>
 </head>
 <body>
 <div class="wrap wide">
   <header class="site-header">
     <a class="site-brand" href="/">labfond</a>
-    <nav class="site-nav">
-      <a href="/#tools">ツール</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="/#tools" data-en="Tools">ツール</a>
+        <a href="/articles/" data-en="Columns">コラム</a>
+        <a href="/about.html" data-en="About">運営者情報</a>
+      </nav>
+      <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
+    </div>
   </header>
 
   <section class="hero">
     <div>
-      <h1>言葉と学びの、<br>ちいさな道具箱。</h1>
-      <p>文字数カウントや色の名前クイズ、多言語のクロスワードや単語辞典など、ブラウザだけで使える無料のツールとクイズを集めています。</p>
+      <h1 data-en="A small toolbox&lt;br&gt;for words and learning.">言葉と学びの、<br>ちいさな道具箱。</h1>
+      <p data-en="Free tools and quizzes that run right in your browser — a character counter, a color-name quiz, a multilingual crossword, a multilingual word dictionary and more.">文字数カウントや色の名前クイズ、多言語のクロスワードや単語辞典など、ブラウザだけで使える無料のツールとクイズを集めています。</p>
     </div>
     <ul class="hero-points">
-      <li><b>✓</b>すべて無料・会員登録なし</li>
-      <li><b>✓</b>インストール不要、スマホでもPCでも</li>
-      <li><b>✓</b>入力内容をできるだけ外部に送らない作り</li>
+      <li><b>✓</b><span data-en="Free, no sign-up">すべて無料・会員登録なし</span></li>
+      <li><b>✓</b><span data-en="No install — works on phone and PC">インストール不要、スマホでもPCでも</span></li>
+      <li><b>✓</b><span data-en="Built to keep what you type on your device">入力内容をできるだけ外部に送らない作り</span></li>
     </ul>
   </section>
 
-  <div class="section-head" id="tools"><h2>ツール</h2></div>
+  <div class="section-head" id="tools"><h2 data-en="Tools">ツール</h2></div>
   <div class="tool-grid">
     <article class="tool-card">
+      <span class="tool-arrow" aria-hidden="true">→</span>
       <div class="tool-top">
         <span class="tool-icon" aria-hidden="true">字</span>
-        <div><h3 class="tool-name">モジツール</h3><p class="tool-tag">文字数カウント・テキスト整形</p></div>
+        <div><h3 class="tool-name"><a href="https://moji.labfond.com/" data-en="MojiTool">モジツール</a></h3><p class="tool-tag" data-en="Character counter &amp; text tools">文字数カウント・テキスト整形</p></div>
       </div>
-      <p>文章の文字数・行数・バイト数をその場で数えます。X（旧Twitter）やInstagramなど用途ごとの上限に収まっているかをゲージで確認でき、Xでは日本語を1文字＝2として数える公式の方式で計算します。全角・半角の変換、空白や改行の削除、ダミーテキストやテスト用文字列の生成、差分比較もできます。入力した文章はブラウザの中だけで処理され、サーバーには送られません。</p>
+      <p data-en="Counts characters, lines and bytes as you type. A gauge shows whether your text fits the limits of X (Twitter), Instagram and more, and X counts follow the official rule where each Japanese character counts as 2. It also converts full-width and half-width characters, removes extra spaces and line breaks, generates dummy and test text, and compares two texts. Everything you type is processed in your browser and never sent to a server.">文章の文字数・行数・バイト数をその場で数えます。X（旧Twitter）やInstagramなど用途ごとの上限に収まっているかをゲージで確認でき、Xでは日本語を1文字＝2として数える公式の方式で計算します。全角・半角の変換、空白や改行の削除、ダミーテキストやテスト用文字列の生成、差分比較もできます。入力した文章はブラウザの中だけで処理され、サーバーには送られません。</p>
       <div class="tool-links">
-        <a class="go" href="https://moji.labfond.com/">ツールを使う</a>
-        <a href="https://moji.labfond.com/guide-limits.html">用途別の文字数の目安</a>
-        <a href="https://moji.labfond.com/guide-bytes.html">全角・半角とバイト数</a>
+        <a href="https://moji.labfond.com/guide-limits.html" data-en="Character limits by use">用途別の文字数の目安</a>
+        <a href="https://moji.labfond.com/guide-bytes.html" data-en="Full-width, half-width &amp; bytes">全角・半角とバイト数</a>
       </div>
     </article>
     <article class="tool-card">
+      <span class="tool-arrow" aria-hidden="true">→</span>
       <div class="tool-top">
         <span class="tool-icon tool-icon-color" aria-hidden="true"></span>
-        <div><h3 class="tool-name">これは何色？</h3><p class="tool-tag">色の名前当てクイズ</p></div>
+        <div><h3 class="tool-name"><a href="https://colorquiz.labfond.com/" data-en="What Color Is This?">これは何色？</a></h3><p class="tool-tag" data-en="Color name quiz">色の名前当てクイズ</p></div>
       </div>
-      <p>表示された色を見て、正しい色の名前を4択で選ぶクイズです。赤や青などの定番の色から、紅（くれない）や浅葱色（あさぎいろ）といった日本の伝統色まで、5つのレベルがあります。正解後には色の由来や使われ方が表示されるので、デザインで色名を正確に覚えたい人や、日本の色の文化に興味がある人におすすめです。</p>
+      <p data-en="Look at a color and pick its correct name from four choices. Five levels take you from everyday colors like red and blue to traditional Japanese colors such as kurenai and asagi-iro. After each correct answer you&#x27;ll see where the color name comes from and how it is used — great for designers who want to learn color names, or anyone curious about Japanese color culture.">表示された色を見て、正しい色の名前を4択で選ぶクイズです。赤や青などの定番の色から、紅（くれない）や浅葱色（あさぎいろ）といった日本の伝統色まで、5つのレベルがあります。正解後には色の由来や使われ方が表示されるので、デザインで色名を正確に覚えたい人や、日本の色の文化に興味がある人におすすめです。</p>
       <div class="tool-links">
-        <a class="go" href="https://colorquiz.labfond.com/">クイズで遊ぶ</a>
-        <a href="https://colorquiz.labfond.com/wairo.html">和色図鑑</a>
-        <a href="https://colorquiz.labfond.com/hex-color-code.html">カラーコードの読み方</a>
+        <a href="https://colorquiz.labfond.com/wairo.html" data-en="Traditional Japanese colors">和色図鑑</a>
+        <a href="https://colorquiz.labfond.com/hex-color-code.html" data-en="Reading HEX color codes">カラーコードの読み方</a>
       </div>
     </article>
     <article class="tool-card">
+      <span class="tool-arrow" aria-hidden="true">→</span>
       <div class="tool-top">
         <span class="tool-icon" aria-hidden="true">あA</span>
-        <div><h3 class="tool-name">多言語クロスワード</h3><p class="tool-tag">日本語・한국어・English</p></div>
+        <div><h3 class="tool-name"><a href="https://crossword.labfond.com/" data-en="Multilingual Crossword">多言語クロスワード</a></h3><p class="tool-tag" data-en="Japanese · Korean · English">日本語・한국어・English</p></div>
       </div>
-      <p>日本語・韓国語・英語の3つの言語で遊べるクロスワードパズルです。果物・動物・国などのお題と、初級・中級・上級の難易度を選ぶと、その場でパズルが自動で作られます。ヒントは選んだ言語で書かれているので、韓国語や英語の単語を意味と一緒に覚える練習にもなります。</p>
+      <p data-en="A crossword puzzle you can play in Japanese, Korean or English. Choose a topic such as fruit, animals or countries and a difficulty level, and a new puzzle is generated on the spot. Clues are written in the language you choose, so it doubles as practice for learning words together with their meanings.">日本語・韓国語・英語の3つの言語で遊べるクロスワードパズルです。果物・動物・国などのお題と、初級・中級・上級の難易度を選ぶと、その場でパズルが自動で作られます。ヒントは選んだ言語で書かれているので、韓国語や英語の単語を意味と一緒に覚える練習にもなります。</p>
       <div class="tool-links">
-        <a class="go" href="https://crossword.labfond.com/">パズルで遊ぶ</a>
-        <a href="https://crossword.labfond.com/howto.html">遊び方</a>
+        <a href="https://crossword.labfond.com/howto.html" data-en="How to play">遊び方</a>
       </div>
     </article>
     <article class="tool-card">
+      <span class="tool-arrow" aria-hidden="true">→</span>
       <div class="tool-top">
         <span class="tool-icon" style="background:#234b6e;color:#fff" aria-hidden="true">言</span>
-        <div><h3 class="tool-name">世界の言葉でなんて言う？</h3><p class="tool-tag">多言語単語辞典</p></div>
+        <div><h3 class="tool-name"><a href="https://kotoba.labfond.com/" data-en="How to Say It in World Languages">世界の言葉でなんて言う？</a></h3><p class="tool-tag" data-en="Multilingual word dictionary">多言語単語辞典</p></div>
       </div>
-      <p>日本語の単語を、英語・フランス語・イタリア語・スペイン語・ドイツ語・韓国語・中国語で一覧表示する辞典です。カタカナでの読み方の目安、発音記号、名詞の性、音声に加えて、名前や作品に使う前に知っておきたい「避けたほうがよい意味」も確認できます。</p>
+      <p data-en="A dictionary that shows a Japanese word side by side in English, French, Italian, Spanish, German, Korean and Chinese. Along with katakana readings, pronunciation symbols, noun genders and audio, it also flags meanings you may want to avoid before using a word as a name or title.">日本語の単語を、英語・フランス語・イタリア語・スペイン語・ドイツ語・韓国語・中国語で一覧表示する辞典です。カタカナでの読み方の目安、発音記号、名詞の性、音声に加えて、名前や作品に使う前に知っておきたい「避けたほうがよい意味」も確認できます。</p>
       <div class="tool-links">
-        <a class="go" href="https://kotoba.labfond.com/">辞典を使う</a>
-        <a href="https://kotoba.labfond.com/words/">収録語一覧</a>
+        <a href="https://kotoba.labfond.com/words/" data-en="Word list">収録語一覧</a>
       </div>
     </article>
     <article class="tool-card">
+      <span class="tool-arrow" aria-hidden="true">→</span>
       <div class="tool-top">
         <span class="tool-icon" style="background:#2f6fde;color:#fff" aria-hidden="true">✓</span>
-        <div><h3 class="tool-name">テスドリ</h3><p class="tool-tag">JSTQB 練習問題（非公式）</p></div>
+        <div><h3 class="tool-name"><a href="https://tesdori.labfond.com/" data-en="Tesdori">テスドリ</a></h3><p class="tool-tag" data-en="JSTQB practice questions (unofficial, Japanese)">JSTQB 練習問題（非公式）</p></div>
       </div>
-      <p>ソフトウェアテストの資格「JSTQB認定テスト技術者資格」の Foundation Level と Advanced Level テストマネジメントに対応した、オリジナルの練習問題サイトです。章ごとの演習と本番形式の模擬試験に加えて、解説や用語集も用意しています。運営者のQAエンジニアとしての実務経験をもとに作成しています。</p>
+      <p data-en="Original practice questions for the JSTQB software testing certification (Foundation Level and Advanced Level Test Management). It offers chapter-by-chapter drills, full mock exams, explanations and a glossary, written from the operator&#x27;s hands-on experience as a QA engineer. The content is in Japanese.">ソフトウェアテストの資格「JSTQB認定テスト技術者資格」の Foundation Level と Advanced Level テストマネジメントに対応した、オリジナルの練習問題サイトです。章ごとの演習と本番形式の模擬試験に加えて、解説や用語集も用意しています。運営者のQAエンジニアとしての実務経験をもとに作成しています。</p>
       <div class="tool-links">
-        <a class="go" href="https://tesdori.labfond.com/">問題を解く</a>
-        <a href="https://tesdori.labfond.com/explain.html">問題解説</a>
-        <a href="https://tesdori.labfond.com/glossary.html">用語集</a>
+        <a href="https://tesdori.labfond.com/explain.html" data-en="Explanations">問題解説</a>
+        <a href="https://tesdori.labfond.com/glossary.html" data-en="Glossary">用語集</a>
       </div>
     </article>
   </div>
 
-  <div class="section-head"><h2>コラム</h2><a href="/articles/">すべて見る →</a></div>
+  <div class="section-head"><h2 data-en="Columns">コラム</h2><a href="/articles/" data-en="View all →">すべて見る →</a></div>
+  <p class="lead" data-lang="en" hidden>Our columns are currently available in Japanese only.</p>
   <div class="col-grid">
     <a class="col-card" href="/articles/browser-tools-privacy.html">
-      <span class="cat">ツールのしくみ</span>
+      <span class="cat" data-en="How tools work">ツールのしくみ</span>
       <h3>入力した文章はどこへ行く？ブラウザだけで動くツールの仕組みと確かめ方</h3>
       <p>無料ツールに文章を貼り付けても大丈夫？処理がブラウザ内で完結する仕組みと、データが外部に送られていないかを自分で確かめる方法を解説します。</p>
     </a>
     <a class="col-card" href="/articles/word-memory.html">
-      <span class="cat">語学</span>
+      <span class="cat" data-en="Language learning">語学</span>
       <h3>覚えた単語を忘れにくくする3つのコツ ― 思い出す・間隔を空ける・使ってみる</h3>
       <p>「思い出す練習」と「間隔を空けた復習」を、クイズやクロスワードで無理なく続ける方法を紹介します。</p>
     </a>
     <a class="col-card" href="/articles/aoshingou.html">
-      <span class="cat">色と言葉</span>
+      <span class="cat" data-en="Colors &amp; words">色と言葉</span>
       <h3>青信号はなぜ「青」？日本語・英語・韓国語の色の名前をくらべてみる</h3>
       <p>緑に見える信号をなぜ「青信号」と呼ぶのか。呼び名の歴史と、3つの言語の色の名前の違いを紹介します。</p>
     </a>
   </div>
 
-  <div class="section-head"><h2>このサイトについて</h2></div>
+  <div class="section-head"><h2 data-en="About this site">このサイトについて</h2></div>
   <div class="about-box">
-    <div>
+    <div data-lang="ja">
       <p>labfond（ラボフォンド）は、QAエンジニアのFDが個人で運営している、ウェブツールとクイズのサイトです。日々の作業で「あると便利」なものや、楽しみながら知識が身につくものを、ひとつずつ作って公開しています。</p>
       <p>入力した内容をできるだけ外部に送らない作りにすること、計算や説明が正しいことを確かめてから公開することを大切にしています。</p>
     </div>
+    <div data-lang="en" hidden>
+      <p>labfond is a site of web tools and quizzes run independently by FD, a QA engineer. I build and publish things that are handy in everyday work, or that let you learn something while having fun — one at a time.</p>
+      <p>I care about keeping what you type on your own device, and about checking that every calculation and explanation is correct before publishing it.</p>
+    </div>
     <dl class="about-facts">
-      <div><dt>運営者</dt><dd>FD（QAエンジニア）</dd></div>
-      <div><dt>料金</dt><dd>すべて無料</dd></div>
-      <div><dt>詳しく</dt><dd><a href="/about.html">運営者情報</a></dd></div>
-      <div><dt>連絡先</dt><dd><a href="/contact.html">お問い合わせ</a></dd></div>
+      <div><dt data-en="Operator">運営者</dt><dd data-en="FD (QA engineer)">FD（QAエンジニア）</dd></div>
+      <div><dt data-en="Price">料金</dt><dd data-en="Free">すべて無料</dd></div>
+      <div><dt data-en="More">詳しく</dt><dd><a href="/about.html" data-en="About">運営者情報</a></dd></div>
+      <div><dt data-en="Contact">連絡先</dt><dd><a href="/contact.html" data-en="Contact form">お問い合わせ</a></dd></div>
     </dl>
   </div>
 
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
-      <a href="/">トップ</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/contact.html">お問い合わせ</a>
+      <a href="/" data-en="Home">トップ</a>
+      <a href="/articles/" data-en="Columns">コラム</a>
+      <a href="/about.html" data-en="About">運営者情報</a>
+      <a href="/privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
+      <a href="/contact.html" data-en="Contact">お問い合わせ</a>
     </nav>
   </footer>
 </div>
+<script>
+(function () {
+  var KEY = "labfond-lang", lang = "ja";
+  try { if (localStorage.getItem(KEY) === "en") lang = "en"; } catch (e) {}
+  var btn = document.getElementById("lang-toggle");
+  function apply() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== lang; });
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      if (!el.hasAttribute("data-ja")) el.setAttribute("data-ja", el.innerHTML);
+      el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-ja");
+    });
+    if (btn) btn.textContent = lang === "en" ? "日本語" : "EN";
+  }
+  if (btn) btn.addEventListener("click", function () {
+    lang = lang === "en" ? "ja" : "en";
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
 </body>
 </html>

@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>プライバシーポリシー｜labfond</title>
+<title data-en="Privacy Policy｜labfond">プライバシーポリシー｜labfond</title>
 <meta name="description" content="labfond（labfond.comおよびサブドメインの各サイト）のプライバシーポリシーです。">
 <meta property="og:title" content="プライバシーポリシー｜labfond">
 <meta property="og:description" content="labfond（labfond.comおよびサブドメインの各サイト）のプライバシーポリシーです。">
@@ -96,19 +96,32 @@
   .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
   .tbl { overflow-x: auto; }
   .more h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 10px; }
+
+  /* language toggle & clickable cards */
+  .header-right { display: flex; align-items: center; gap: 18px; }
+  .lang-toggle { background: var(--panel); border: 1.5px solid var(--border); color: var(--text-sub); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  [data-lang][hidden] { display: none !important; }
+  .article-list li { position: relative; transition: border-color .15s; }
+  .article-list li:hover { border-color: var(--accent); }
+  .article-list li > a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site-header">
     <a class="site-brand" href="/">labfond</a>
-    <nav class="site-nav">
-      <a href="/#tools">ツール</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="/#tools" data-en="Tools">ツール</a>
+        <a href="/articles/" data-en="Columns">コラム</a>
+        <a href="/about.html" data-en="About">運営者情報</a>
+      </nav>
+      <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
+    </div>
   </header>
 
+  <div data-lang="ja">
   <h1>プライバシーポリシー</h1>
   <p class="lead">labfond（labfond.com およびそのサブドメインで運営する各サイト。以下「当サイト」）における個人情報の取り扱いについて定めます。</p>
 
@@ -158,17 +171,81 @@
 
     <p class="updated">制定日：2026年10月7日<br>改定日：2026年10月11日<br>運営者：FD</p>
   </div>
+  </div>
+  <div data-lang="en" hidden>
+  <h1>Privacy Policy</h1>
+  <p class="lead">This policy explains how personal information is handled on labfond (the sites operated on labfond.com and its subdomains; the "Site"). The Japanese version is the governing text.</p>
+  <div class="doc-panel">
+    <h2>Sites covered</h2>
+    <p>This policy applies to labfond.com and every site operated on its subdomains, including:</p>
+    <ul>
+      <li>MojiTool (moji.labfond.com)</li>
+      <li>What Color Is This? (colorquiz.labfond.com)</li>
+      <li>Multilingual Crossword (crossword.labfond.com)</li>
+      <li>How to Say It in World Languages (kotoba.labfond.com)</li>
+      <li>Tesdori (tesdori.labfond.com)</li>
+    </ul>
+    <h2>Text you enter</h2>
+    <p>The tools on this Site are, in principle, built so that all processing finishes inside your browser. Anything you type or paste into an input field is not sent to any external server, including the Site's own servers, and is not stored.</p>
+    <h2>Analytics</h2>
+    <p>This Site uses analytics tools such as Google Analytics. These tools use cookies to collect traffic data. The data is collected anonymously and does not identify you personally. You can refuse this collection by disabling cookies. For details, see Google's policy page.</p>
+    <p><a href="https://policies.google.com/technologies/partner-sites?hl=en" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a></p>
+    <h2>Advertising</h2>
+    <p>This Site may display ads served by third-party vendors and ad networks, including Google AdSense.</p>
+    <ul>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet.</li>
+      <li>You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ads Settings</a>.</li>
+      <li>You can also opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://optout.aboutads.info/" target="_blank" rel="noopener">www.aboutads.info</a>.</li>
+    </ul>
+    <p>The information used for ad delivery does not include anything that identifies you personally, such as your name, address, email address or phone number. For more on how Google uses cookies in advertising, see <a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener">Advertising – Privacy &amp; Terms – Google</a>.</p>
+    <h2>Information collected through the contact form</h2>
+    <p>Information such as your name and email address that you send through the contact form (Google Forms) is used only to reply to your inquiry, and is not provided to third parties without your consent except where required by law.</p>
+    <h2>Disclaimer</h2>
+    <p>I do my best to publish accurate information, but content may contain errors or become outdated. I cannot accept responsibility for any damage arising from the content of this Site.</p>
+    <p>The accuracy of each tool's calculations and generated results is also not guaranteed. If you use them for anything important, please check the results yourself.</p>
+    <h2>Copyright</h2>
+    <p>The copyright of the text, images and other content on this Site belongs to the operator.</p>
+    <h2>Changes to this policy</h2>
+    <p>The Site complies with the laws that apply to personal information and will review and improve this policy as needed. The latest version is always published on this page.</p>
+    <h2>Contact</h2>
+    <p>For questions about this policy, please use the <a href="/contact.html">contact page</a>.</p>
+    <p class="updated">Established: October 7, 2026<br>Last revised: October 11, 2026<br>Operator: FD</p>
+  </div>
+  </div>
 
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
-      <a href="/">トップ</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/contact.html">お問い合わせ</a>
+      <a href="/" data-en="Home">トップ</a>
+      <a href="/articles/" data-en="Columns">コラム</a>
+      <a href="/about.html" data-en="About">運営者情報</a>
+      <a href="/privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
+      <a href="/contact.html" data-en="Contact">お問い合わせ</a>
     </nav>
   </footer>
 </div>
+<script>
+(function () {
+  var KEY = "labfond-lang", lang = "ja";
+  try { if (localStorage.getItem(KEY) === "en") lang = "en"; } catch (e) {}
+  var btn = document.getElementById("lang-toggle");
+  function apply() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== lang; });
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      if (!el.hasAttribute("data-ja")) el.setAttribute("data-ja", el.innerHTML);
+      el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-ja");
+    });
+    if (btn) btn.textContent = lang === "en" ? "日本語" : "EN";
+  }
+  if (btn) btn.addEventListener("click", function () {
+    lang = lang === "en" ? "ja" : "en";
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
 </body>
 </html>

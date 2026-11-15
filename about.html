@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>運営者情報｜labfond</title>
+<title data-en="About｜labfond">運営者情報｜labfond</title>
 <meta name="description" content="labfondの運営者情報です。">
 <meta property="og:title" content="運営者情報｜labfond">
 <meta property="og:description" content="labfondの運営者情報です。">
@@ -96,19 +96,32 @@
   .note-box { background: var(--accent-soft); border-radius: 10px; padding: 12px 16px; font-size: 0.86rem !important; }
   .tbl { overflow-x: auto; }
   .more h2 { font-size: 1.05rem; font-weight: 700; margin: 30px 0 10px; }
+
+  /* language toggle & clickable cards */
+  .header-right { display: flex; align-items: center; gap: 18px; }
+  .lang-toggle { background: var(--panel); border: 1.5px solid var(--border); color: var(--text-sub); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  [data-lang][hidden] { display: none !important; }
+  .article-list li { position: relative; transition: border-color .15s; }
+  .article-list li:hover { border-color: var(--accent); }
+  .article-list li > a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site-header">
     <a class="site-brand" href="/">labfond</a>
-    <nav class="site-nav">
-      <a href="/#tools">ツール</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="/#tools" data-en="Tools">ツール</a>
+        <a href="/articles/" data-en="Columns">コラム</a>
+        <a href="/about.html" data-en="About">運営者情報</a>
+      </nav>
+      <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
+    </div>
   </header>
 
+  <div data-lang="ja">
   <h1>運営者情報</h1>
   <p class="lead">labfond について</p>
 
@@ -145,17 +158,78 @@
     <h2>広告について</h2>
     <p>当サイトは、Google AdSenseなど第三者配信の広告サービスを利用する場合があります。詳細は<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。</p>
   </div>
+  </div>
+  <div data-lang="en" hidden>
+  <h1>About</h1>
+  <p class="lead">About labfond</p>
+
+  <div class="doc-panel">
+    <h2>Operator</h2>
+    <div class="profile-row"><span class="k">Site name</span><span>labfond</span></div>
+    <div class="profile-row"><span class="k">Operator</span><span>FD</span></div>
+    <div class="profile-row"><span class="k">URL</span><span>https://labfond.com/</span></div>
+    <div class="profile-row"><span class="k">Contact</span><span>Please use the <a href="/contact.html">contact form</a>.</span></div>
+
+    <h2>About this site</h2>
+    <p>labfond is an independently run site that offers free web tools and quizzes you can use right in your browser. No sign-up or installation is needed, and most tools run entirely inside your browser.</p>
+    <p>Drawing on hands-on experience as a QA engineer, I plan to keep adding tools little by little, with a focus on accuracy and ease of use.</p>
+
+    <h2>Policies</h2>
+    <ul>
+      <li><b>Keep your input on your device</b>: tools such as the character counter are built so that processing finishes inside your browser.</li>
+      <li><b>Check before publishing</b>: counting rules and the origins of colors and words are checked against official specifications and sources before publishing, and any errors found are corrected.</li>
+      <li><b>Free, with no sign-up</b>: every tool is free to use without an account. Running costs are planned to be covered by advertising.</li>
+    </ul>
+
+    <h2>Our sites</h2>
+    <ul>
+      <li><a href="https://moji.labfond.com/">MojiTool</a> (character counter and text tools)</li>
+      <li><a href="https://colorquiz.labfond.com/">What Color Is This?</a> (color name quiz)</li>
+      <li><a href="https://crossword.labfond.com/">Multilingual Crossword</a> (crosswords in Japanese, Korean and English)</li>
+      <li><a href="https://kotoba.labfond.com/">How to Say It in World Languages</a> (multilingual word dictionary)</li>
+      <li><a href="https://tesdori.labfond.com/">Tesdori</a> (unofficial JSTQB practice questions, Japanese)</li>
+    </ul>
+
+    <h2>Accuracy of information</h2>
+    <p>I do my best to make every tool and piece of content work and read correctly, but I cannot guarantee that it is accurate or complete. If you use it for anything important, please check the results yourself.</p>
+
+    <h2>Advertising</h2>
+    <p>This site may use third-party advertising services such as Google AdSense. See the <a href="/privacy.html">Privacy Policy</a> for details.</p>
+  </div>
+  </div>
 
   <footer class="site-footer">
     <span>© 2026 labfond</span>
     <nav>
-      <a href="/">トップ</a>
-      <a href="/articles/">コラム</a>
-      <a href="/about.html">運営者情報</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/contact.html">お問い合わせ</a>
+      <a href="/" data-en="Home">トップ</a>
+      <a href="/articles/" data-en="Columns">コラム</a>
+      <a href="/about.html" data-en="About">運営者情報</a>
+      <a href="/privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
+      <a href="/contact.html" data-en="Contact">お問い合わせ</a>
     </nav>
   </footer>
 </div>
+<script>
+(function () {
+  var KEY = "labfond-lang", lang = "ja";
+  try { if (localStorage.getItem(KEY) === "en") lang = "en"; } catch (e) {}
+  var btn = document.getElementById("lang-toggle");
+  function apply() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-lang]").forEach(function (el) { el.hidden = el.getAttribute("data-lang") !== lang; });
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      if (!el.hasAttribute("data-ja")) el.setAttribute("data-ja", el.innerHTML);
+      el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-ja");
+    });
+    if (btn) btn.textContent = lang === "en" ? "日本語" : "EN";
+  }
+  if (btn) btn.addEventListener("click", function () {
+    lang = lang === "en" ? "ja" : "en";
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+</script>
 </body>
 </html>
